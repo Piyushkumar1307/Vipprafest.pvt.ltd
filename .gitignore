@@ -7,18 +7,51 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Build output
 dist
 dist-ssr
+build
+
+# Vite
 *.local
 
-# Editor directories and files
+# TypeScript
+*.tsbuildinfo
+
+# Env (secrets) — keep a committed `.env.example` with dummy keys
+.env
+.env.*
+!.env.example
+
+# Test / coverage
+coverage
+*.lcov
+.nyc_output
+
+# Caches
+.cache
+.parcel-cache
+.eslintcache
+.turbo
+.vercel
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Misc
+*.pem
+*.tgz
