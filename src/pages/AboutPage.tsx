@@ -10,7 +10,7 @@ const principles = [
 ] as const
 
 const img =
-  'https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?w=1200&q=80&auto=format&fit=crop'
+  'https://firebasestorage.googleapis.com/v0/b/pdfview-india.appspot.com/o/vipprafes%2FWhatsApp%20Image%202026-04-25%20at%2015.23.23.jpeg?alt=media&token=f5fbc8ec-130a-45c5-9aff-0e7eeca9e1b7us'
 
 export function AboutPage() {
   return (

@@ -1,10 +1,10 @@
 import { company } from './content'
 
 export const chatGreeting = {
-  title: 'Vippra Assistant',
+  title: `${company.name} Assistant`,
   subtitle: 'Quick answers from our public FAQ.',
   welcome:
-    "Hi! I'm a simple assistant with pre-feed data about Vippra. Ask a question or tap a topic below. For detailed estimates, our team will follow up on the contact page.",
+    `Hi! I'm a simple assistant with pre-fed answers about ${company.name}. Ask a question or tap a topic below. For detailed estimates, our team will follow up on the contact page.`,
 } as const
 
 /** Short labels shown as chips to seed the conversation */
@@ -33,7 +33,7 @@ const knowledge: Knowledge[] = [
   },
   {
     keywords: ['service', 'services', 'offer', 'do you build', 'capabilities', 'what can'],
-    reply: `Vippra handles commercial shells, residential builds, site & civil work, and turnkey delivery from preconstruction through warranty. See the full list on the **Services** page for details.`,
+    reply: `${company.name} handles commercial shells, residential builds, site & civil work, and turnkey delivery from preconstruction through warranty. See the full list on the **Services** page for details.`,
   },
   {
     keywords: ['quote', 'estimate', 'pricing', 'price', 'cost', 'bid', 'budget', 'how much'],
@@ -79,7 +79,7 @@ You can also use the **Contact** page on this site.`,
   },
   {
     keywords: ['bot', 'ai', 'who are you', 'real'],
-    reply: `I'm a **fixed FAQ bot** on this site—I only use pre-feed data. For real project decisions, a person from Vippra will help you on email or a call.`,
+    reply: `I'm a **fixed FAQ bot** on this site—I only use pre-fed answers. For real project decisions, a person from ${company.name} will help you on email or a call.`,
   },
 ]
 

@@ -23,12 +23,15 @@ export function Header() {
       <Container className="flex h-16 items-center justify-between gap-4">
         <Link
           to="/"
-          className="group flex items-baseline gap-1 font-heading text-lg font-extrabold tracking-tight text-paper"
+          className="group flex items-baseline gap-2 font-heading text-lg font-extrabold tracking-tight text-paper"
         >
-          <span className="text-bronze transition group-hover:text-paper">
-            V
-          </span>
-          ippra
+          <img
+            src="/logo.png"
+            alt={`${company.name} logo`}
+            className="h-5 w-auto translate-y-[2px] select-none opacity-95"
+            draggable={false}
+          />
+          <span className="transition group-hover:text-paper">{company.name}</span>
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-mist md:flex">

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { ArrowUpRight, MapPin, Phone, Mail } from 'lucide-react'
+import { MapPin, Phone, Mail } from 'lucide-react'
 import { company } from '../../data/content'
 import { Container } from '../ui/Container'
 
@@ -80,8 +80,6 @@ export function Footer() {
             rel="noreferrer"
             className="inline-flex items-center gap-1 transition hover:text-paper"
           >
-            Photography via Unsplash
-            <ArrowUpRight size={12} />
           </a>
         </div>
       </Container>

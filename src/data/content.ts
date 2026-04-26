@@ -1,13 +1,13 @@
 export const company = {
-  name: 'Vippra',
+  name: 'Vipprafest',
   tagline: 'Structure first. Finishes that endure.',
-  email: 'hello@vippra.build',
-  phone: '+91 92057 26749',
-  address: '1200 Foundry Street, Bayview District, CA',
+  email: 'VIPPRAFESTPRIVATELIMITED@GMAIL.COM',
+  phone: '+91 76439 63125',
+  address: 'Jehanabad, Bihar (India)',
   /** Public Telegram @username, no @. Set to '' to hide the Telegram button. */
-  telegramUsername: 'vippra',
+  telegramUsername: 'VIPPRAFEST',
   /** Prefills the one-tap Telegram link; user still sends the message in Telegram. */
-  telegramDefaultMessage: `Hi! I'm interested in Vippra's construction services. Can we talk about my project?`,
+  telegramDefaultMessage: `Hi! I'm interested in Vipprafest's construction services. Can we talk about my project?`,
 }
 
 export const services = [

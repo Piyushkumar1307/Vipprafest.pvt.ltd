@@ -108,7 +108,7 @@ export function ChatWidget() {
             <motion.div
               id={panelId}
               role="dialog"
-              aria-label="Chat with Vippra assistant"
+                aria-label="Chat with Vipprafest assistant"
               initial={{ opacity: 0, y: 16, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 12, scale: 0.98 }}
@@ -228,7 +228,7 @@ export function ChatWidget() {
           className="relative z-[101] flex h-14 w-14 items-center justify-center rounded-full border border-bronze/40 bg-bronze/90 text-ink shadow-lg shadow-bronze/20 transition hover:scale-105 hover:bg-bronze focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-bronze"
           aria-expanded={open}
           aria-controls={open ? panelId : undefined}
-          aria-label={open ? 'Close chat panel' : 'Open chat with Vippra assistant'}
+          aria-label={open ? 'Close chat panel' : 'Open chat with Vipprafest assistant'}
         >
           {open ? (
             <X className="size-6" />
