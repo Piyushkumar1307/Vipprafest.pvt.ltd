@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from 'react'
+import { useMemo, useState, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
 import { Send, Check } from 'lucide-react'
 import { company } from '../data/content'
@@ -7,10 +7,45 @@ import { Button } from '../components/ui/ButtonLink'
 
 export function ContactPage() {
   const [sent, setSent] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [values, setValues] = useState({ name: '', email: '', message: '' })
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  const canSubmit = useMemo(() => {
+    return (
+      values.name.trim().length >= 2 &&
+      values.email.trim().length >= 3 &&
+      values.message.trim().length >= 10 &&
+      !submitting
+    )
+  }, [values, submitting])
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    setSent(true)
+    setError(null)
+    setSubmitting(true)
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(values),
+      })
+
+      if (!res.ok) {
+        const data = (await res.json().catch(() => null)) as
+          | { error?: string }
+          | null
+        throw new Error(data?.error ?? 'Failed to send message')
+      }
+
+      setSent(true)
+      setValues({ name: '', email: '', message: '' })
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Something went wrong')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -72,8 +107,8 @@ export function ContactPage() {
                   Thanks—we will be in touch
                 </p>
                 <p className="mt-2 text-sm text-mist">
-                  This is a demo form with no server; your message was not
-                  transmitted.
+                  Your message has been sent to our inbox. We typically reply
+                  within one business day.
                 </p>
                 <Button
                   type="button"
@@ -86,6 +121,11 @@ export function ContactPage() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-5">
+                {error && (
+                  <div className="rounded-lg border border-rust/40 bg-rust/10 px-3 py-2 text-sm text-paper">
+                    {error}
+                  </div>
+                )}
                 <div>
                   <label
                     htmlFor="name"
@@ -98,7 +138,11 @@ export function ContactPage() {
                     name="name"
                     required
                     className="mt-1.5 w-full rounded border border-bronze/20 bg-ink px-3 py-2.5 text-paper placeholder:text-mist/50 focus:border-bronze focus:outline-none"
-                    placeholder="Alex Rivera"
+                    placeholder="Name"
+                    value={values.name}
+                    onChange={(e) =>
+                      setValues((v) => ({ ...v, name: e.target.value }))
+                    }
                   />
                 </div>
                 <div>
@@ -115,6 +159,10 @@ export function ContactPage() {
                     required
                     className="mt-1.5 w-full rounded border border-bronze/20 bg-ink px-3 py-2.5 text-paper placeholder:text-mist/50 focus:border-bronze focus:outline-none"
                     placeholder="you@company.com"
+                    value={values.email}
+                    onChange={(e) =>
+                      setValues((v) => ({ ...v, email: e.target.value }))
+                    }
                   />
                 </div>
                 <div>
@@ -131,11 +179,19 @@ export function ContactPage() {
                     rows={4}
                     className="mt-1.5 w-full resize-y rounded border border-bronze/20 bg-ink px-3 py-2.5 text-paper placeholder:text-mist/50 focus:border-bronze focus:outline-none"
                     placeholder="Size, city, target groundbreak…"
+                    value={values.message}
+                    onChange={(e) =>
+                      setValues((v) => ({ ...v, message: e.target.value }))
+                    }
                   />
                 </div>
-                <Button type="submit" className="w-full sm:w-auto">
+                <Button
+                  type="submit"
+                  className="w-full sm:w-auto"
+                  disabled={!canSubmit}
+                >
                   <Send className="size-4" />
-                  Send message
+                  {submitting ? 'Sending…' : 'Send message'}
                 </Button>
               </form>
             )}
