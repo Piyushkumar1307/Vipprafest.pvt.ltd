@@ -12,11 +12,12 @@ export function ServicesPage() {
             Services
           </p>
           <h1 className="mt-2 font-heading text-4xl font-extrabold text-paper sm:text-5xl">
-            What we can own end-to-end
+            What we deliver end-to-end
           </h1>
           <p className="mt-4 text-lg text-mist">
-            Engage for a single line item or a full GMP. We integrate estimating,
-            VDC, and field reporting so the story matches the numbers.
+            Engage us for material supply, machinery parts, manpower, or full civil and
+            infrastructure contracting. We align scope, timelines, and execution so
+            delivery stays predictable.
           </p>
         </header>
 

@@ -1,12 +1,13 @@
 import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 import { Container } from '../components/ui/Container'
+import { TeamSection } from '../components/home/TeamSection'
 import { company } from '../data/content'
 
 const principles = [
-  'Transparent budget revisions with alternates, not surprise COs.',
-  'Superintendent-led huddles with trade partners each phase.',
-  'Warranty program with named contacts—not a generic help desk.',
+  'Reliable supply and execution with clear timelines.',
+  'Project-ready teams for public and private works.',
+  'Quality-first delivery with practical coordination on site.',
 ] as const
 
 const img =
@@ -27,13 +28,16 @@ export function AboutPage() {
                 Who we are
               </p>
               <h1 className="mt-2 font-heading text-4xl font-extrabold text-paper sm:text-5xl">
-                Builders who read the drawing set twice
+                Built for supply, delivery, and execution
               </h1>
               <p className="mt-6 text-lg text-mist">
-                {company.name} started on complex retrofits in industrial
-                districts—tight clearances, live tenants, unforgiving inspectors.
-                That shaped how we run every job: sequence before speed, and
-                clarity before concrete.
+                {company.name} supports construction and infrastructure work by
+                supplying key materials like concrete, steel, and sand; providing
+                machinery parts and irrigation equipment; and arranging manpower
+                supply (skilled and unskilled labour). We also undertake civil and
+                infrastructure contracts including construction, renovation, repairs,
+                road works, RCC/PCC works, drainage, irrigation works, and piling
+                foundations for buildings and roads.
               </p>
             </motion.div>
             <motion.div
@@ -74,6 +78,8 @@ export function AboutPage() {
           </ul>
         </Container>
       </section>
+
+      <TeamSection showAboutLink={false} />
     </div>
   )
 }

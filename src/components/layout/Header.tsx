@@ -11,12 +11,13 @@ const nav = [
   { to: '/about', label: 'About' },
   { to: '/services', label: 'Services' },
   { to: '/projects', label: 'Projects' },
+  { to: '/', label: 'Team', hash: 'team' as const },
   { to: '/contact', label: 'Contact' },
 ] as const
 
 export function Header() {
   const [open, setOpen] = useState(false)
-  const { pathname } = useLocation()
+  const { pathname, hash } = useLocation()
 
   return (
     <header className="sticky top-0 z-40 border-b border-paper/10 bg-ink/80 backdrop-blur-md">
@@ -35,21 +36,29 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-mist md:flex">
-          {nav.map((item) => (
-            <Link
-              key={item.to}
-              to={item.to}
-              className={cn(
-                'relative transition hover:text-paper',
-                pathname === item.to && 'text-paper',
-              )}
-            >
-              {item.label}
-              {pathname === item.to && (
-                <span className="absolute -bottom-1 left-0 h-px w-full bg-bronze" />
-              )}
-            </Link>
-          ))}
+          {nav.map((item) => {
+            const to =
+              'hash' in item ? ({ pathname: item.to, hash: item.hash } as const) : item.to
+            const active =
+              'hash' in item
+                ? pathname === item.to && hash === `#${item.hash}`
+                : pathname === item.to
+            return (
+              <Link
+                key={'hash' in item ? `${item.to}#${item.hash}` : item.to}
+                to={to}
+                className={cn(
+                  'relative transition hover:text-paper',
+                  active && 'text-paper',
+                )}
+              >
+                {item.label}
+                {active && (
+                  <span className="absolute -bottom-1 left-0 h-px w-full bg-bronze" />
+                )}
+              </Link>
+            )
+          })}
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
@@ -87,8 +96,12 @@ export function Header() {
             <Container className="flex flex-col gap-1 py-4">
               {nav.map((item) => (
                 <Link
-                  key={item.to}
-                  to={item.to}
+                  key={'hash' in item ? `${item.to}#${item.hash}` : item.to}
+                  to={
+                    'hash' in item
+                      ? ({ pathname: item.to, hash: item.hash } as const)
+                      : item.to
+                  }
                   onClick={() => setOpen(false)}
                   className="rounded-sm px-3 py-2 text-paper hover:bg-ink-muted"
                 >

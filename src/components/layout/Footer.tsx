@@ -7,8 +7,8 @@ export function Footer() {
   return (
     <footer className="border-t border-bronze/20 bg-ink-muted">
       <Container className="py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-          <div>
+        <div className="grid gap-x-8 gap-y-12 md:grid-cols-2 lg:grid-cols-12">
+          <div className="lg:col-span-4">
             <p className="font-heading text-xl font-bold text-paper">
               {company.name}
             </p>
@@ -16,7 +16,7 @@ export function Footer() {
               {company.tagline}
             </p>
           </div>
-          <div>
+          <div className="lg:col-span-2">
             <p className="text-xs font-semibold uppercase tracking-widest text-bronze">
               Navigate
             </p>
@@ -43,7 +43,7 @@ export function Footer() {
               </li>
             </ul>
           </div>
-          <div>
+          <div className="lg:col-span-2">
             <p className="text-xs font-semibold uppercase tracking-widest text-bronze">
               Office
             </p>
@@ -52,7 +52,7 @@ export function Footer() {
               {company.address}
             </p>
           </div>
-          <div>
+          <div className="lg:col-span-4">
             <p className="text-xs font-semibold uppercase tracking-widest text-bronze">
               Direct
             </p>
@@ -60,15 +60,15 @@ export function Footer() {
               href={`tel:${company.phone.replace(/[^\d+]/g, '')}`}
               className="mt-4 flex items-center gap-2 text-sm text-mist transition hover:text-paper"
             >
-              <Phone size={16} className="text-bronze" />
+              <Phone size={16} className="shrink-0 text-bronze" />
               {company.phone}
             </a>
             <a
               href={`mailto:${company.email}`}
-              className="mt-3 flex items-center gap-2 text-sm text-mist transition hover:text-paper"
+              className="mt-3 flex items-center gap-2 text-[13px] text-mist transition hover:text-paper md:text-sm"
             >
-              <Mail size={16} className="text-bronze" />
-              {company.email}
+              <Mail size={16} className="shrink-0 text-bronze" />
+              <span className="whitespace-nowrap">{company.email}</span>
             </a>
           </div>
         </div>

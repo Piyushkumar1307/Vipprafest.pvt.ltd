@@ -1,6 +1,7 @@
 export const company = {
   name: 'Vipprafest',
-  tagline: 'Structure first. Finishes that endure.',
+  tagline:
+    'Suppliers of construction materials, machinery parts, manpower, and civil contracting.',
   email: 'VIPPRAFESTPRIVATELIMITED@GMAIL.COM',
   phone: '+91 76439 63125',
   address: 'Jehanabad, Bihar (India)',
@@ -12,24 +13,33 @@ export const company = {
 
 export const services = [
   {
-    id: 'commercial',
-    title: 'Commercial shells',
-    desc: 'High-bay steel, tilt-up, and complex sequencing for logistics and life-science clients.',
+    id: 'materials',
+    title: 'Construction material supply',
+    desc: 'Concrete, steel, sand, and project-specific materials with consistent quality and dependable timelines.',
   },
   {
-    id: 'residential',
-    title: 'Residential build',
-    desc: 'Custom homes, ADUs, and multi-unit with thermal-first envelopes and honest timelines.',
+    id: 'machinery',
+    title: 'Machinery parts & equipment',
+    desc: 'Parts and supplies for excavators, loaders, mixer machines, water supply systems, and irrigation equipment.',
   },
   {
-    id: 'civil',
-    title: 'Site & civil',
-    desc: 'Grading, utility coordination, and stormwater plans aligned with your permit package.',
+    id: 'manpower',
+    title: 'Manpower supply',
+    desc: 'Skilled and unskilled labour including masons and site support teams—scaled to your project needs.',
   },
   {
-    id: 'turnkey',
-    title: 'Turnkey delivery',
-    desc: 'Owner-representative through punch list. One ledger, one accountable team.',
+    id: 'contracting',
+    title: 'Civil & infrastructure contracting',
+    desc: 'Construction, renovation, road works, RCC/PCC, bridges, tunnels, drainage, irrigation, piling foundations, and public utility works.',
+  },
+] as const
+
+export const team = [
+  {
+    name: 'Pawan Kumar',
+    role: 'Director',
+    photo: '/team/pawan-kumar.png',
+    photoAlt: 'Pawan Kumar, Director — Vipprafest Pvt. Ltd.',
   },
 ] as const
 

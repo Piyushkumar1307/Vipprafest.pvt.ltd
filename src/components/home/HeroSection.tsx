@@ -143,7 +143,7 @@ export function HeroSection() {
             >
               <HardHat className="size-3.5" />
             </motion.span>
-            General contractor
+            Construction supply & contracting
           </motion.p>
 
           <div className="[perspective:1000px]">
@@ -165,18 +165,19 @@ export function HeroSection() {
                     variants={headingChild}
                     className="inline-block [transform-style:preserve-3d] [&:not(:last-child)]:mr-2"
                   >
-                    build
+                    supply
                   </motion.span>{' '}
                   <motion.span
                     variants={headingChild}
                     className="inline-block bg-gradient-to-r from-bronze to-amber-200/90 bg-clip-text text-transparent [transform-style:preserve-3d]"
                   >
-                    resilient
+                    reliable
                   </motion.span>
                 </span>
               </span>
               <span className="block">
-                {['spaces', 'and', 'honest', 'schedules.'].map((w) => (
+                {['materials,', 'manpower,', 'and', 'execute', 'civil', 'works.'].map(
+                  (w) => (
                   <motion.span
                     key={w}
                     variants={headingChild}
@@ -184,7 +185,8 @@ export function HeroSection() {
                   >
                     {w}
                   </motion.span>
-                ))}
+                  ),
+                )}
               </span>
             </motion.h1>
           </div>
@@ -195,9 +197,9 @@ export function HeroSection() {
             transition={{ delay: 0.4, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
             className="mt-6 text-lg text-mist"
           >
-            {company.tagline} From preconstruction through warranty, {company.name} pairs
-            field discipline with design intent—so your building performs as well as it
-            photographs.
+            {company.tagline} From concrete and steel to machinery parts and skilled
+            labour, {company.name} supports public and private projects with dependable
+            supply and on-ground execution.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}

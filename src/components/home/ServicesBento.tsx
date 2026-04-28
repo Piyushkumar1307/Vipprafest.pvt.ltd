@@ -1,17 +1,23 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { Building2, Hammer, Route, Wrench, ArrowUpRight } from 'lucide-react'
+import {
+  Package,
+  Wrench,
+  Users,
+  Building2,
+  ArrowUpRight,
+} from 'lucide-react'
 import { services } from '../../data/content'
 import { Container } from '../ui/Container'
 import { TiltCard } from '../motion/TiltCard'
 import { cn } from '../../lib/cn'
 
 const icons = {
-  commercial: Building2,
-  residential: Hammer,
-  civil: Route,
-  turnkey: Wrench,
+  materials: Package,
+  machinery: Wrench,
+  manpower: Users,
+  contracting: Building2,
 } as const
 
 const cardContainer = {
