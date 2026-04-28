@@ -1,6 +1,6 @@
-import { useMemo, useState, type FormEvent } from 'react'
+import { useState, type FormEvent } from 'react'
 import { motion } from 'framer-motion'
-import { Send, Check } from 'lucide-react'
+import { Send, Check, Loader2 } from 'lucide-react'
 import { company } from '../data/content'
 import { Container } from '../components/ui/Container'
 import { Button } from '../components/ui/ButtonLink'
@@ -11,25 +11,36 @@ export function ContactPage() {
   const [error, setError] = useState<string | null>(null)
   const [values, setValues] = useState({ name: '', email: '', message: '' })
 
-  const canSubmit = useMemo(() => {
-    return (
-      values.name.trim().length >= 2 &&
-      values.email.trim().length >= 3 &&
-      values.message.trim().length >= 10 &&
-      !submitting
-    )
-  }, [values, submitting])
-
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault()
     setError(null)
+
+    const name = values.name.trim()
+    const email = values.email.trim()
+    const message = values.message.trim()
+
+    if (name.length < 2) {
+      setError('Please enter your name (at least 2 characters).')
+      return
+    }
+    if (email.length < 3 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError('Please enter a valid email address.')
+      return
+    }
+    if (message.length < 10) {
+      setError(
+        'Please add a slightly longer summary — at least 10 characters — so we can respond helpfully.',
+      )
+      return
+    }
+
     setSubmitting(true)
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(values),
+        body: JSON.stringify({ name, email, message }),
       })
 
       if (!res.ok) {
@@ -49,6 +60,37 @@ export function ContactPage() {
   }
 
   return (
+    <>
+      {submitting && (
+        <div
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-ink/75 p-4 backdrop-blur-sm"
+          role="dialog"
+          aria-modal="true"
+          aria-live="polite"
+          aria-busy="true"
+          aria-labelledby="contact-sending-title"
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.2 }}
+            className="w-full max-w-sm rounded-2xl border border-bronze/25 bg-ink-muted/95 p-8 text-center shadow-2xl shadow-bronze/10"
+          >
+            <div className="mx-auto flex size-14 items-center justify-center rounded-full bg-bronze/15 text-bronze">
+              <Loader2 className="size-8 animate-spin" aria-hidden />
+            </div>
+            <p
+              id="contact-sending-title"
+              className="mt-5 font-heading text-lg font-bold text-paper"
+            >
+              Sending your message
+            </p>
+            <p className="mt-2 text-sm text-mist">
+              Please wait — this usually takes just a moment.
+            </p>
+          </motion.div>
+        </div>
+      )}
     <div className="py-20 sm:py-28">
       <Container>
         <div className="grid gap-16 lg:grid-cols-2">
@@ -137,6 +179,8 @@ export function ContactPage() {
                     id="name"
                     name="name"
                     required
+                    minLength={2}
+                    maxLength={80}
                     className="mt-1.5 w-full rounded border border-bronze/20 bg-ink px-3 py-2.5 text-paper placeholder:text-mist/50 focus:border-bronze focus:outline-none"
                     placeholder="Name"
                     value={values.name}
@@ -157,6 +201,7 @@ export function ContactPage() {
                     name="email"
                     type="email"
                     required
+                    maxLength={160}
                     className="mt-1.5 w-full rounded border border-bronze/20 bg-ink px-3 py-2.5 text-paper placeholder:text-mist/50 focus:border-bronze focus:outline-none"
                     placeholder="you@company.com"
                     value={values.email}
@@ -176,6 +221,8 @@ export function ContactPage() {
                     id="message"
                     name="message"
                     required
+                    minLength={10}
+                    maxLength={4000}
                     rows={4}
                     className="mt-1.5 w-full resize-y rounded border border-bronze/20 bg-ink px-3 py-2.5 text-paper placeholder:text-mist/50 focus:border-bronze focus:outline-none"
                     placeholder="Size, city, target groundbreak…"
@@ -187,8 +234,9 @@ export function ContactPage() {
                 </div>
                 <Button
                   type="submit"
-                  className="w-full sm:w-auto"
-                  disabled={!canSubmit}
+                  className="w-full sm:w-auto disabled:pointer-events-none disabled:opacity-40"
+                  disabled={submitting}
+                  aria-busy={submitting}
                 >
                   <Send className="size-4" />
                   {submitting ? 'Sending…' : 'Send message'}
@@ -199,5 +247,6 @@ export function ContactPage() {
         </div>
       </Container>
     </div>
+    </>
   )
 }
