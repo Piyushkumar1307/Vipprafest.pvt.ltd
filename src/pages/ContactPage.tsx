@@ -37,7 +37,11 @@ export function ContactPage() {
     setSubmitting(true)
 
     try {
-      const res = await fetch('/api/contact', {
+      const endpoint =
+        (import.meta.env.VITE_CONTACT_API_URL as string | undefined) ??
+        '/api/contact'
+
+      const res = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, email, message }),
