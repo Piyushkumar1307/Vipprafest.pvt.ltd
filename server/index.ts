@@ -1,4 +1,6 @@
 import 'dotenv/config'
+import path from 'node:path'
+import { existsSync } from 'node:fs'
 import express from 'express'
 import cors from 'cors'
 import nodemailer from 'nodemailer'
@@ -42,6 +44,7 @@ function createTransport() {
 
 const app = express()
 app.disable('x-powered-by')
+app.set('trust proxy', 1)
 
 app.use(
   cors({
@@ -123,7 +126,29 @@ app.post('/api/contact', async (req, res) => {
   }
 })
 
+const isProd = process.env.NODE_ENV === 'production'
+const distPath = path.join(process.cwd(), 'dist')
+
+if (isProd && existsSync(distPath)) {
+  app.use(express.static(distPath))
+  app.get('{*path}', (req, res, next) => {
+    if (req.path.startsWith('/api')) {
+      res.status(404).type('text').send('Not Found')
+      return
+    }
+    res.sendFile(path.join(distPath, 'index.html'), (err) => {
+      if (err) next(err)
+    })
+  })
+} else if (isProd) {
+  console.warn('NODE_ENV=production but dist/ is missing — run `npm run build` first.')
+}
+
 app.listen(PORT, () => {
-  console.log(`API listening on http://localhost:${PORT}`)
+  if (isProd && existsSync(distPath)) {
+    console.log(`Server (API + static) listening on http://localhost:${PORT}`)
+  } else {
+    console.log(`API listening on http://localhost:${PORT}`)
+  }
 })
 
