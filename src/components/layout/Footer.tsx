@@ -37,6 +37,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/gallery" className="hover:text-paper">
+                  Gallery
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact" className="hover:text-paper">
                   Contact
                 </Link>

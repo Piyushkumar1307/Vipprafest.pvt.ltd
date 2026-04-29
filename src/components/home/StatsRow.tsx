@@ -10,9 +10,9 @@ import { useRef } from 'react'
 import { Container } from '../ui/Container'
 
 const items = [
-  { value: '32', suffix: '+', label: 'Years combined PM experience' },
-  { value: '4.2', suffix: 'M', label: 'Sq ft under active care' },
-  { value: '0', suffix: ' lost days', label: 'Last three fiscal years' },
+  { value: '4', suffix: '+', label: 'Years of experience' },
+  { value: '20', suffix: '+', label: 'Projects completed' },
+  { value: '0', suffix: ' lost days', label: 'Last four fiscal years' },
 ] as const
 
 function ParallaxStat({

@@ -176,7 +176,7 @@ export function HeroSection() {
                 </span>
               </span>
               <span className="block">
-                {['materials,', 'manpower,', 'and', 'execute', 'civil', 'works.'].map(
+                {['materials,', 'workforce,', 'and', 'execute', 'civil', 'works.'].map(
                   (w) => (
                   <motion.span
                     key={w}
@@ -198,8 +198,8 @@ export function HeroSection() {
             className="mt-6 text-lg text-mist"
           >
             {company.tagline} From concrete and steel to machinery parts and skilled
-            labour, {company.name} supports public and private projects with dependable
-            supply and on-ground execution.
+            labor, {company.name} supports public and private projects with dependable
+            supply and on-site execution.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 16 }}

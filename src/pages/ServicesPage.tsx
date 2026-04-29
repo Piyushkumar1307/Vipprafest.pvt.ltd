@@ -15,9 +15,9 @@ export function ServicesPage() {
             What we deliver end-to-end
           </h1>
           <p className="mt-4 text-lg text-mist">
-            Engage us for material supply, machinery parts, manpower, or full civil and
-            infrastructure contracting. We align scope, timelines, and execution so
-            delivery stays predictable.
+            Work with us for material supply, machinery parts, workforce supply, or full
+            civil and infrastructure contracting. We align scope, timelines, and
+            execution so delivery stays predictable.
           </p>
         </header>
 

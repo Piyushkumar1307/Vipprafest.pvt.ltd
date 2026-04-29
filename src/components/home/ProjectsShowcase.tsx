@@ -23,14 +23,14 @@ export function ProjectsShowcase() {
           className="flex max-w-2xl flex-col gap-2"
         >
           <p className="text-xs font-semibold uppercase tracking-widest text-bronze">
-            Field notes
+            Projects
           </p>
           <h2 className="font-heading text-3xl font-extrabold text-paper sm:text-4xl">
-            Asymmetric forms, predictable outcomes
+            Work you can count on
           </h2>
           <p className="text-mist">
-            A skewed layout mirrors how sites actually get built—one trade at a
-            time, one milestone replacing the last.
+            A quick look at recent work—each project is delivered with clear scope,
+            reliable timelines, and strong on-site coordination.
           </p>
         </motion.div>
 
@@ -71,7 +71,7 @@ export function ProjectsShowcase() {
             to="/projects"
             className="inline-block border-b border-bronze/50 pb-0.5 text-sm font-semibold text-bronze transition hover:border-bronze"
           >
-            Open the full portfolio
+            View all projects
           </Link>
         </motion.p>
       </Container>

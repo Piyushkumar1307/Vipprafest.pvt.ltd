@@ -33,8 +33,8 @@ export function AboutPage() {
               <p className="mt-6 text-lg text-mist">
                 {company.name} supports construction and infrastructure work by
                 supplying key materials like concrete, steel, and sand; providing
-                machinery parts and irrigation equipment; and arranging manpower
-                supply (skilled and unskilled labour). We also undertake civil and
+                machinery parts and irrigation equipment; and arranging workforce
+                supply (skilled and unskilled labor). We also undertake civil and
                 infrastructure contracts including construction, renovation, repairs,
                 road works, RCC/PCC works, drainage, irrigation works, and piling
                 foundations for buildings and roads.

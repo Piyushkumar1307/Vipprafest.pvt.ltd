@@ -103,11 +103,11 @@ export function ContactPage() {
               Contact
             </p>
             <h1 className="mt-2 font-heading text-4xl font-extrabold text-paper sm:text-5xl">
-              Talk through your next move
+              Talk about your next project
             </h1>
             <p className="mt-4 text-mist">
-              Share a short brief—we reply within one business day with
-              next-step options. No RFP required for an initial call.
+              Share a short brief—we reply within one business day with next steps.
+              No paperwork needed to get started.
             </p>
             <dl className="mt-10 space-y-3 text-sm">
               <div>

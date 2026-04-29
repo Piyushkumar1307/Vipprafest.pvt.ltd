@@ -15,8 +15,8 @@ export function ProjectsPage() {
             Selected work
           </h1>
           <p className="mt-4 text-lg text-mist">
-            Representative deliveries across industrial, housing, and civic
-            programs. Real names changed where confidentiality applies.
+            A selection of work across industrial, housing, and civic projects.
+            Names may be changed when confidentiality applies.
           </p>
         </header>
 
@@ -51,7 +51,7 @@ export function ProjectsPage() {
                   variant="ghost"
                   className="mt-auto w-full !justify-center"
                 >
-                  Similar build
+                  Discuss a similar project
                 </ButtonLink>
               </div>
             </motion.li>

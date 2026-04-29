@@ -56,14 +56,14 @@ export function ServicesBento() {
               Capabilities
             </p>
             <h2 className="mt-2 font-heading text-3xl font-extrabold text-paper sm:text-4xl">
-              A bento of what we do best
+              What we do best
             </h2>
           </div>
           <Link
             to="/services"
             className="inline-flex items-center gap-1 text-sm font-semibold text-bronze transition hover:gap-2"
           >
-            Full service list
+            View all services
             <ArrowUpRight className="size-4" />
           </Link>
         </motion.div>

@@ -4,7 +4,7 @@ export const chatGreeting = {
   title: `${company.name} Assistant`,
   subtitle: 'Quick answers from our public FAQ.',
   welcome:
-    `Hi! I'm a simple assistant with pre-fed answers about ${company.name}. Ask a question or tap a topic below. For detailed estimates, our team will follow up on the contact page.`,
+    `Hi! I'm a simple assistant with prewritten answers about ${company.name}. Ask a question or tap a topic below. For detailed estimates, our team will follow up via the Contact page.`,
 } as const
 
 /** Short labels shown as chips to seed the conversation */
@@ -33,7 +33,7 @@ const knowledge: Knowledge[] = [
   },
   {
     keywords: ['service', 'services', 'offer', 'do you build', 'capabilities', 'what can'],
-    reply: `${company.name} handles commercial shells, residential builds, site & civil work, and turnkey delivery from preconstruction through warranty. See the full list on the **Services** page for details.`,
+    reply: `${company.name} provides construction materials, machinery parts, workforce supply, and civil & infrastructure contracting. See the full list on the **Services** page for details.`,
   },
   {
     keywords: ['quote', 'estimate', 'pricing', 'price', 'cost', 'bid', 'budget', 'how much'],
@@ -52,11 +52,11 @@ You can also use the **Contact** page on this site.`,
   },
   {
     keywords: ['project', 'projects', 'portfolio', 'work', 'built', 'past', 'example'],
-    reply: `We publish selected work on the **Projects** page (logistics, multi-family, civic, and more). Tell us your sector and we can point you to a relevant example in conversation with our team.`,
+    reply: `We publish selected work on the **Projects** page. Tell us what kind of work you need and our team can share a relevant example.`,
   },
   {
     keywords: ['hour', 'hours', 'open', 'when', 'time'],
-    reply: `Office hours are typically **weekdays, 7:00 a.m. to 5:00 p.m. PT**—confirm by phone for holidays or on-site walkthroughs outside normal hours.`,
+    reply: `Office hours are typically **weekdays**. Please call ${company.phone} to confirm timing on holidays or for site visits.`,
   },
   {
     keywords: [
@@ -67,7 +67,7 @@ You can also use the **Contact** page on this site.`,
       'compliance',
       'safety',
     ],
-    reply: `We carry standard contractor insurance and can provide COIs and license numbers for your RFP. Mention your requirements in your message so we include the right documents.`,
+    reply: `We carry standard contractor insurance and can share COIs and license details on request. Tell us what documents you need and we will include them in our reply.`,
   },
   {
     keywords: ['emergency', 'urgent', 'leak', 'site issue'],
@@ -79,7 +79,7 @@ You can also use the **Contact** page on this site.`,
   },
   {
     keywords: ['bot', 'ai', 'who are you', 'real'],
-    reply: `I'm a **fixed FAQ bot** on this site—I only use pre-fed answers. For real project decisions, a person from ${company.name} will help you on email or a call.`,
+    reply: `I'm a **fixed FAQ bot** on this site—I only use prewritten answers. For real project decisions, a person from ${company.name} will help you by email or on a call.`,
   },
 ]
 

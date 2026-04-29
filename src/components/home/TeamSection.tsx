@@ -23,7 +23,7 @@ export function TeamSection({ showAboutLink = true }: { showAboutLink?: boolean 
               Leadership
             </h2>
             <p className="mt-3 max-w-xl text-mist">
-              A direct point of contact for scope, timelines, and delivery on construction
+              One direct point of contact for scope, timelines, and delivery across
               supply and civil works.
             </p>
           </div>
@@ -79,7 +79,7 @@ export function TeamSection({ showAboutLink = true }: { showAboutLink?: boolean 
                 </p>
                 <p className="mt-3 text-sm leading-relaxed text-mist">
                   Leading procurement, contracting partnerships, and day-to-day coordination for
-                  materials, manpower, and civil execution.
+                  materials, workforce supply, and civil works.
                 </p>
               </div>
             </motion.article>

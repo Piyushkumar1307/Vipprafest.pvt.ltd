@@ -1,7 +1,7 @@
 export const company = {
   name: 'Vipprafest',
   tagline:
-    'Suppliers of construction materials, machinery parts, manpower, and civil contracting.',
+    'Construction materials, machinery parts, workforce supply, and civil contracting.',
   email: 'VIPPRAFESTPRIVATELIMITED@GMAIL.COM',
   phone: '+91 76439 63125',
   address: 'Jehanabad, Bihar (India)',
@@ -24,8 +24,8 @@ export const services = [
   },
   {
     id: 'manpower',
-    title: 'Manpower supply',
-    desc: 'Skilled and unskilled labour including masons and site support teams—scaled to your project needs.',
+    title: 'Workforce supply',
+    desc: 'Skilled and unskilled labor, including masons and site support teams—scaled to your project needs.',
   },
   {
     id: 'contracting',
