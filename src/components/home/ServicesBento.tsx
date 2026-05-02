@@ -81,7 +81,7 @@ export function ServicesBento() {
           animate={inView ? 'show' : 'hidden'}
           className="mt-12 grid gap-4 [perspective:1200px] sm:grid-cols-2 lg:grid-cols-3"
         >
-          {services.map((s, i) => {
+          {services.slice(0, 4).map((s, i) => {
             const Icon = getServiceIcon(s.id)
             return (
               <motion.div key={s.id} variants={cardItem} className="[transform-style:preserve-3d]">
