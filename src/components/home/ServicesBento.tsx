@@ -7,18 +7,25 @@ import {
   Users,
   Building2,
   ArrowUpRight,
+  Warehouse,
+  Waves,
+  Landmark,
+  Route,
 } from 'lucide-react'
 import { services } from '../../data/content'
 import { Container } from '../ui/Container'
 import { TiltCard } from '../motion/TiltCard'
-import { cn } from '../../lib/cn'
 
-const icons = {
-  materials: Package,
-  machinery: Wrench,
-  manpower: Users,
-  contracting: Building2,
-} as const
+function getServiceIcon(id: string) {
+  if (id.includes('materials')) return Package
+  if (id.includes('machinery')) return Wrench
+  if (id.includes('manpower')) return Users
+  if (id.includes('road')) return Route
+  if (id.includes('bridge')) return Landmark
+  if (id.includes('pump') || id.includes('dam')) return Waves
+  if (id.includes('warehouse')) return Warehouse
+  return Building2
+}
 
 const cardContainer = {
   hidden: { opacity: 0 },
@@ -72,35 +79,21 @@ export function ServicesBento() {
           variants={cardContainer}
           initial="hidden"
           animate={inView ? 'show' : 'hidden'}
-          className="mt-12 grid gap-4 [perspective:1200px] sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2"
+          className="mt-12 grid gap-4 [perspective:1200px] sm:grid-cols-2 lg:grid-cols-3"
         >
           {services.map((s, i) => {
-            const Icon = icons[s.id as keyof typeof icons] ?? Wrench
-            const wide = i === 0
+            const Icon = getServiceIcon(s.id)
             return (
-              <motion.div
-                key={s.id}
-                variants={cardItem}
-                className={cn(
-                  wide && 'sm:col-span-2 lg:row-span-1',
-                  '[transform-style:preserve-3d]',
-                )}
-              >
-                <TiltCard
-                  className={cn(
-                    'group flex h-full flex-col rounded-lg border border-bronze/15 bg-ink-muted/50 p-6 transition hover:border-bronze/40',
-                    'shadow-lg shadow-black/20',
-                  )}
-                >
-                  <div className="mb-4 flex size-10 items-center justify-center rounded border border-bronze/30 text-bronze transition group-hover:border-bronze/50 group-hover:bg-bronze/10">
+              <motion.div key={s.id} variants={cardItem} className="[transform-style:preserve-3d]">
+                <TiltCard className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-bronze/20 bg-gradient-to-b from-ink to-ink-muted/70 p-6 shadow-lg shadow-black/20 transition hover:border-bronze/45">
+                  <div className="absolute right-4 top-4 rounded-full border border-bronze/25 bg-ink-muted/50 px-2 py-1 text-[11px] font-semibold text-bronze">
+                    {String(i + 1).padStart(2, '0')}
+                  </div>
+                  <div className="mb-4 flex size-11 items-center justify-center rounded-lg border border-bronze/35 bg-bronze/10 text-bronze transition group-hover:scale-105 group-hover:border-bronze/60">
                     <Icon className="size-5" />
                   </div>
-                  <h3 className="font-heading text-lg font-bold text-paper">
-                    {s.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-mist">
-                    {s.desc}
-                  </p>
+                  <h3 className="max-w-[90%] font-heading text-lg font-bold text-paper">{s.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-mist">{s.desc}</p>
                 </TiltCard>
               </motion.div>
             )

@@ -6,6 +6,7 @@ import { AboutPage } from './pages/AboutPage'
 import { ServicesPage } from './pages/ServicesPage'
 import { ProjectsPage } from './pages/ProjectsPage'
 import { GalleryPage } from './pages/GalleryPage'
+import { ClientsPage } from './pages/ClientsPage'
 import { ContactPage } from './pages/ContactPage'
 import { NotFoundPage } from './pages/NotFoundPage'
 
@@ -26,6 +27,7 @@ function PageTransition() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/clients" element={<ClientsPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

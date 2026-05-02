@@ -25,12 +25,42 @@ export const services = [
   {
     id: 'manpower',
     title: 'Workforce supply',
-    desc: 'Skilled and unskilled labor, including masons and site support teams—scaled to your project needs.',
+    desc: 'Skilled and unskilled labor, including masons and site support teams scaled to your project needs.',
   },
   {
     id: 'contracting',
     title: 'Civil & infrastructure contracting',
-    desc: 'Construction, renovation, road works, RCC/PCC, bridges, tunnels, drainage, irrigation, piling foundations, and public utility works.',
+    desc: 'Construction, renovation, RCC/PCC, drainage, irrigation, piling foundations, and public utility works.',
+  },
+  {
+    id: 'road-construction',
+    title: 'Road construction',
+    desc: 'Execution of urban and rural roadway projects with proper grading, sub-base, and durable surface finishing.',
+  },
+  {
+    id: 'bridge-construction',
+    title: 'Bridge construction',
+    desc: 'Design-coordinated bridge construction support including foundations, structural works, and site execution.',
+  },
+  {
+    id: 'building-construction',
+    title: 'Building construction',
+    desc: 'Residential, commercial, and institutional building construction with quality control from groundwork to handover.',
+  },
+  {
+    id: 'pump-house',
+    title: 'Pump house construction',
+    desc: 'Construction and civil integration for pump house facilities supporting water supply and irrigation operations.',
+  },
+  {
+    id: 'dam-construction',
+    title: 'Dam works',
+    desc: 'Support for dam-related civil works, reinforcement, and site-level construction activities for water infrastructure.',
+  },
+  {
+    id: 'warehouse-construction',
+    title: 'Warehouse construction',
+    desc: 'Industrial and logistics warehouse construction with efficient layouts, structural reliability, and long-term utility.',
   },
 ] as const
 
@@ -39,33 +69,77 @@ export const team = [
     name: 'Pawan Kumar',
     role: 'Director',
     photo: '/team/pawan-kumar.png',
-    photoAlt: 'Pawan Kumar, Director — Vipprafest Pvt. Ltd.',
+    photoAlt: 'Pawan Kumar, Director - Vipprafest Pvt. Ltd.',
   },
 ] as const
 
 export const projects = [
   {
-    name: 'Harbor Logistics Annex',
-    type: 'Steel + tilt-up',
+    name: 'East Central Railway',
+    type: 'Repairs of staff quarters',
     year: '2024',
-    area: '240k sq ft',
-    image:
-      'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1200&q=80&auto=format&fit=crop',
+    area: 'Railway residential repairs',
+    location: 'Barauni and Muzaffarpur',
+    date: '14/02/2024 to 19/03/2024',
+    image: '/clients/east-central-railway.jpg',
   },
   {
-    name: 'Redwood Residences',
-    type: 'Multi-family wood frame',
+    name: 'East Central Railway',
+    type: 'Widening of road, pollution control measures labour facilities',
     year: '2023',
-    area: '86 units',
-    image:
-      'https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=1200&q=80&auto=format&fit=crop',
+    area: 'Road widening and site support work',
+    location: 'Danapur',
+    date: '15/09/2023 to 16/10/2023',
+    image: '/clients/east-central-railway.jpg',
   },
   {
-    name: 'Civic Arts Pavilion',
-    type: 'Glulam + cross-lam',
-    year: '2025',
-    area: '18k sq ft',
-    image:
-      'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80&auto=format&fit=crop',
+    name: 'Rural Works Department',
+    type: 'Construction of road',
+    year: '2021',
+    area: 'Road construction work',
+    location: 'Bagicha BunaBigha',
+    date: '15/06/2021 to 28/10/2021',
+    image: '/clients/rural-works-bihar.jpeg',
+  },
+  {
+    name: 'Rural Works Department',
+    type: 'Construction of road',
+    year: '2021',
+    area: 'Road construction work',
+    location: 'Babhna Sakurabad',
+    date: '21/06/2021 to 01/11/2021',
+    image: '/clients/rural-works-bihar.jpeg',
+  },
+  {
+    name: 'Rural Works Department',
+    type: 'Construction of road',
+    year: '2021',
+    area: 'Road construction work',
+    location: 'Makhdumpur',
+    date: '15/06/2021 to 28/10/2021',
+    image: '/clients/rural-works-bihar.jpeg',
+  },
+] as const
+
+export const clients = [
+  {
+    name: 'East Central Railway',
+    logo: '/clients/east-central-railway.jpg',
+  },
+  {
+    name: 'Bihar Water Resources',
+    logo: '/clients/bihar-water-resources.jpeg',
+  },
+  {
+    name: 'Rural Works Department, Bihar',
+    logo: '/clients/rural-works-bihar.jpeg',
+  },
+  {
+    name: 'Building Construction Dept., Bihar',
+    logo: '/clients/building-construction-bihar.jpeg',
+  },
+  {
+    name: 'Jharkhand Water Resources',
+    logo: '/clients/jharkhand-water-resources.png',
   },
 ] as const

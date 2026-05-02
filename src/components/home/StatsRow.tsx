@@ -10,7 +10,7 @@ import { useRef } from 'react'
 import { Container } from '../ui/Container'
 
 const items = [
-  { value: '4', suffix: '+', label: 'Years of experience' },
+  { value: '6', suffix: '+', label: 'Years of experience' },
   { value: '20', suffix: '+', label: 'Projects completed' },
   { value: '0', suffix: ' lost days', label: 'Last four fiscal years' },
 ] as const

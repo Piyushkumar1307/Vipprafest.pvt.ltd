@@ -35,7 +35,7 @@ export function ProjectsShowcase() {
         </motion.div>
 
         <ul className="mt-12 flex flex-col gap-6">
-          {projects.map((p, i) => {
+          {projects.slice(0, 3).map((p, i) => {
             const skew = i % 2 === 0 ? 'lg:-translate-x-4' : 'lg:translate-x-4'
             return (
               <motion.li
@@ -55,6 +55,12 @@ export function ProjectsShowcase() {
                     {p.name}
                   </h3>
                   <p className="mt-2 text-sm text-mist">Delivered scope: {p.area}</p>
+                  <p className="mt-2 text-sm text-mist">
+                    Location: <span className="text-paper">{p.location}</span>
+                  </p>
+                  <p className="mt-1 text-sm text-mist">
+                    Date: <span className="text-paper">{p.date}</span>
+                  </p>
                 </div>
               </motion.li>
             )

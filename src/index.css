@@ -15,11 +15,27 @@
 }
 
 @layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html[data-theme='light'] {
+    color-scheme: light;
+    --color-ink: #f4efe4;
+    --color-ink-muted: #e8dfcf;
+    --color-paper: #1d1812;
+    --color-paper-dim: #342c22;
+    --color-bronze: #9b742b;
+    --color-bronze-deep: #7e5b1c;
+    --color-rust: #9e4824;
+    --color-mist: #5f584e;
+  }
+
   html {
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-ink text-paper antialiased font-sans;
+    @apply bg-ink text-paper antialiased font-sans transition-colors duration-300;
   }
   ::selection {
     @apply bg-bronze/30 text-paper;

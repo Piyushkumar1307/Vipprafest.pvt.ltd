@@ -59,7 +59,7 @@ export function Footer() {
           </div>
           <div className="lg:col-span-4">
             <p className="text-xs font-semibold uppercase tracking-widest text-bronze">
-              Direct
+              Contact
             </p>
             <a
               href={`tel:${company.phone.replace(/[^\d+]/g, '')}`}
@@ -74,6 +74,15 @@ export function Footer() {
             >
               <Mail size={16} className="shrink-0 text-bronze" />
               <span className="whitespace-nowrap">{company.email}</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/company/vipprafest-pvt-ltd/?viewAsMember=true"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 flex items-center gap-2 text-sm text-mist transition hover:text-paper"
+            >
+              <span className="text-bronze">in</span>
+              Vipprafest
             </a>
           </div>
         </div>

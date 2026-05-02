@@ -45,6 +45,12 @@ export function ProjectsPage() {
                   {p.name}
                 </h2>
                 <p className="mt-2 text-sm text-mist">{p.area}</p>
+                <p className="mt-2 text-sm text-mist">
+                  Location: <span className="text-paper">{p.location}</span>
+                </p>
+                <p className="mt-1 text-sm text-mist">
+                  Date: <span className="text-paper">{p.date}</span>
+                </p>
                 <div className="mt-4" />
                 <ButtonLink
                   to="/contact"

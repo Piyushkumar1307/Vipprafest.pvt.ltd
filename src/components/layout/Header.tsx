@@ -1,24 +1,39 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, Moon, Sun, X } from 'lucide-react'
 import { company } from '../../data/content'
 import { cn } from '../../lib/cn'
 import { Container } from '../ui/Container'
 import { ButtonLink } from '../ui/ButtonLink'
+import { applyTheme, getInitialTheme, persistTheme, type ThemeMode } from '../../lib/theme'
 
 const nav = [
   { to: '/about', label: 'About' },
   { to: '/services', label: 'Services' },
   { to: '/projects', label: 'Projects' },
   { to: '/gallery', label: 'Gallery' },
-  { to: '/', label: 'Team', hash: 'team' as const },
+  { to: '/clients', label: 'Clients' },
   { to: '/contact', label: 'Contact' },
 ] as const
 
 export function Header() {
   const [open, setOpen] = useState(false)
-  const { pathname, hash } = useLocation()
+  const [theme, setTheme] = useState<ThemeMode>('dark')
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    const initial = getInitialTheme()
+    setTheme(initial)
+    applyTheme(initial)
+  }, [])
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark'
+    setTheme(next)
+    applyTheme(next)
+    persistTheme(next)
+  }
 
   return (
     <header className="sticky top-0 z-40 border-b border-paper/10 bg-ink/80 backdrop-blur-md">
@@ -38,16 +53,11 @@ export function Header() {
 
         <nav className="hidden items-center gap-8 text-sm font-medium text-mist md:flex">
           {nav.map((item) => {
-            const to =
-              'hash' in item ? ({ pathname: item.to, hash: item.hash } as const) : item.to
-            const active =
-              'hash' in item
-                ? pathname === item.to && hash === `#${item.hash}`
-                : pathname === item.to
+            const active = pathname === item.to
             return (
               <Link
-                key={'hash' in item ? `${item.to}#${item.hash}` : item.to}
-                to={to}
+                key={item.to}
+                to={item.to}
                 className={cn(
                   'relative transition hover:text-paper',
                   active && 'text-paper',
@@ -63,6 +73,15 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            className="flex h-9 w-9 items-center justify-center rounded border border-bronze/30 text-paper transition hover:bg-ink-muted"
+            aria-label={theme === 'dark' ? 'Switch to day mode' : 'Switch to night mode'}
+            title={theme === 'dark' ? 'Day mode' : 'Night mode'}
+          >
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
           <a
             href={`tel:${company.phone.replace(/[^\d+]/g, '')}`}
             className="text-sm text-mist transition hover:text-paper"
@@ -95,14 +114,19 @@ export function Header() {
             transition={{ duration: 0.2 }}
           >
             <Container className="flex flex-col gap-1 py-4">
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="mb-1 flex items-center justify-between rounded-sm border border-bronze/30 px-3 py-2 text-paper hover:bg-ink-muted"
+                aria-label={theme === 'dark' ? 'Switch to day mode' : 'Switch to night mode'}
+              >
+                <span className="text-sm">{theme === 'dark' ? 'Day mode' : 'Night mode'}</span>
+                {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+              </button>
               {nav.map((item) => (
                 <Link
-                  key={'hash' in item ? `${item.to}#${item.hash}` : item.to}
-                  to={
-                    'hash' in item
-                      ? ({ pathname: item.to, hash: item.hash } as const)
-                      : item.to
-                  }
+                  key={item.to}
+                  to={item.to}
                   onClick={() => setOpen(false)}
                   className="rounded-sm px-3 py-2 text-paper hover:bg-ink-muted"
                 >
