@@ -19,14 +19,12 @@ const nav = [
 
 export function Header() {
   const [open, setOpen] = useState(false)
-  const [theme, setTheme] = useState<ThemeMode>('dark')
+  const [theme, setTheme] = useState<ThemeMode>(() => getInitialTheme())
   const { pathname } = useLocation()
 
   useEffect(() => {
-    const initial = getInitialTheme()
-    setTheme(initial)
-    applyTheme(initial)
-  }, [])
+    applyTheme(theme)
+  }, [theme])
 
   const toggleTheme = () => {
     const next = theme === 'dark' ? 'light' : 'dark'
